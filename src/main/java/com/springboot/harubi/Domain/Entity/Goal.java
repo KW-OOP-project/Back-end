@@ -4,21 +4,30 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @Entity
-public class Plan {
+public class Goal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long plan_id;
+    private Long goal_id;
 
     @Column(nullable = false)
-    private String plan_text;
+    private String goal_text;
 
     @Column (nullable = false)
-    private LocalDateTime goal_date;
+    private Date goal_start_date;
+
+    @Column (nullable = false)
+    private Date goal_end_date;
+
+    @Column (nullable = false)
+    private Date goal_date;
+
+    @Column (nullable = false)
+    private boolean goal_status;
 
     // Many to One 관계 설정
     @ManyToOne (fetch = FetchType.LAZY)
